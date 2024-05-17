@@ -23,12 +23,12 @@ export function MainNav({
       >
         Orders
       </Link>
-      <Link
-        to="/dashboard/settings"
+      <a
+        href="/dashboard/settings"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Settings
-      </Link>
+      </a>
     </nav>
   )
 }

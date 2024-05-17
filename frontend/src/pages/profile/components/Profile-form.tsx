@@ -82,9 +82,15 @@ export function ProfileForm() {
       axios.put(`http://localhost:3010/updateuser/${userData.id}`,validate).then(()=>{
         axios.get(`http://localhost:3010/oneUser/${userData.id}`).then((data)=>{
           console.log(data.data.data.accessToken)
-          console.log(data.data.data.response)
+          // console.log(data.data.data.response)
           localStorage.setItem("token",data.data.data.accessToken)
           toast.success("Updated Successfully")
+          axios.put(`http://localhost:3010/updateTestmonailByUserID/${userData.id}`,{
+            user_name:validate.user_name,
+            bio:validate.bio
+          }).then(()=>{
+            console.log("done ")
+          }).catch(e=>console.log(e))
         })
      
       }).catch(e=>{
@@ -93,7 +99,13 @@ export function ProfileForm() {
       })
     }
   }
-
+  const handleDelete = (id,email)=>{
+    if ( userData.email == email) localStorage.removeItem("token")
+    axios.delete(`http://localhost:3010/deleteUser/${id}`).then(()=>{
+  navigate("/")
+        location.reload()
+    })
+}
 
   return (
     <Form {...form}>
@@ -154,6 +166,9 @@ export function ProfileForm() {
         />
         
         <Button type="submit">Update profile</Button>
+        <Button className=" float-right" variant="destructive" type="button" onClick={()=>{
+    handleDelete(userData?.id,userData?.email)
+  }}>Delete Account</Button>
       </form>
     </Form>
   )

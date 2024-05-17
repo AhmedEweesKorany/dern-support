@@ -104,6 +104,12 @@ const User = {
         
 
         }).catch(e=>callback("invalid email",null))
+    },
+
+
+    // make user admin 
+    makeUserAdmin : (id,callback)=>{
+        db.User.update({isAdmin:true},{where:{user_id:id}}).then(()=> callback(null,true)).catch(()=>callback("err",null))
     }
 }
 

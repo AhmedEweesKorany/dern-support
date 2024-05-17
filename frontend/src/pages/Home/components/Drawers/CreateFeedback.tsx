@@ -16,12 +16,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { PassThrough } from "stream"
+import { jwtDecode } from "jwt-decode"
+import { useNavigate } from "react-router-dom"
 
-export function DrawerDialogDemo({title}) {
+
+const token = localStorage.getItem("token") || null
+const userData = token ? jwtDecode(token).user_info:null 
+
+
+export function CreateFeeback({title}) {
   const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
- 
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
@@ -30,12 +35,12 @@ export function DrawerDialogDemo({title}) {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Create New Category</DialogTitle>
+            <DialogTitle>Insert Your feedback</DialogTitle>
             <DialogDescription>
-              Addin new category to your stock
+              insert your feedback below
             </DialogDescription>
           </DialogHeader>
-          <CategoryForm />
+          <FeedbackFrom />
         </DialogContent>
       </Dialog>
     )
@@ -44,23 +49,26 @@ export function DrawerDialogDemo({title}) {
 
 }
 
-function CategoryForm({ className }: React.ComponentProps<"form">) {
+function FeedbackFrom({ className }: React.ComponentProps<"form">) {
 
-  const [category_name,setName] = React.useState("")
+  const [data,setData] = React.useState("")
+  const navigate = useNavigate()
+    console.log(!userData)
  const handleClick = ()=>{
-  if(category_name == "") return toast.error("Please Enter Valid Data!")
-  axios.post("http://localhost:3010/createCategory",{category_name}).then((data)=>{
+    if(!userData)return navigate("/auth/login")
+  if(data == "") return toast.error("Please Enter Valid Data!")
+  axios.post("http://localhost:3010/createTestmonail",{feedback:data,user_name:userData.user_name,bio:userData.bio,user_id:userData.id}).then((data)=>{
     location.reload()
-  }).catch(e=> toast.error(e.response.data.message))
+  }).catch(e=> toast.error(e))
 }
   return (
     <form className={cn("grid items-start gap-4", className)} >
-      <div className="grid gap-2">
-        <Label htmlFor="text">Category Name</Label>
-        <Input type="text" id="text" placeholder="ex: Factory" onChange={(e)=>setName(e.target.value)} />
+      <div className="grid gap-2 ">
+        <Label htmlFor="text">Write Your Feedback</Label>
+        <Input type="text" id="text"  onChange={(e)=>setData(e.target.value)} />
       </div>
      
-      <Button  onClick={handleClick} type="button">Create</Button>
+      <Button  onClick={handleClick} type="button">Add Feedback</Button>
     </form>
   )
 }

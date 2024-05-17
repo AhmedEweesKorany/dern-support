@@ -29,7 +29,7 @@ export function Login() {
       console.log(data.data.data.response)
       localStorage.setItem("token",data.data.data.accessToken)
       toast.success("logged in!")
-      navigate(-1)
+      navigate("/")
     }).catch(e=>    toast.error(e.response.data.message)  )
 
   }

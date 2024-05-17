@@ -1,7 +1,6 @@
 import {
     Avatar,
     AvatarFallback,
-    AvatarImage,
   } from "@/components/ui/avatar"
   import { Button } from "@/components/ui/button"
   import {
@@ -46,6 +45,11 @@ import { Link } from "react-router-dom"
          <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </DropdownMenuItem></a>
+
+            <a href="/">
+         <DropdownMenuItem>
+              Home
             </DropdownMenuItem></a>
            {userData?.isAdmin? <a href="/dashboard"> 
            <DropdownMenuItem>

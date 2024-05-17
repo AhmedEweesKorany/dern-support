@@ -24,7 +24,7 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
     const navigate = useNavigate()
     const handleClick = ()=>{
-        navigate(-1)
+        navigate("/")
     }
   return (
     <>

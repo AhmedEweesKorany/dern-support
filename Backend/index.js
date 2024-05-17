@@ -8,7 +8,7 @@ const Port = process.env.PORT || 3010
 const corsOptions = require("./config/corsOptions")
 const router  = require("./routes/router")
 
-//applying middlewars 
+//applying middlewars  
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser()) 

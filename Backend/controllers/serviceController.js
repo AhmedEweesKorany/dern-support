@@ -1,8 +1,8 @@
-const Category = require('../models/Category')
+const Service = require('../models/Service')
 
-// get AllCategories
-const getAllCategories = (req,res)=>{
-    Category.all((err,data)=>{
+// get All Services
+const getAllServices = (req,res)=>{
+    Service.all((err,data)=>{
         if (err) return res.status(401).json({message:"error happend ",err})
         return res.status(200).json({data})
     })
@@ -10,14 +10,14 @@ const getAllCategories = (req,res)=>{
 
 
 // Creat code
-const createCategory = (req,res)=>{
+const createService = (req,res)=>{
     const data = req.body
-    Category.categoryByName(data.category_name,(err,val)=>{ 
+    Service.serviceByName(data.service_name,(err,val)=>{ 
         if(val){
             return res.status(409).json({message:"category already exist"})
         }
         else{
-            Category.create(data,(err,data)=>{
+            Service.create(data,(err,data)=>{
                 if (err) return res.status(401).json({message:"error happend ",err})
                 return res.status(200).json({data})
             })
@@ -26,27 +26,27 @@ const createCategory = (req,res)=>{
 
 }
 
-// delete category
+// delete Service
 
-const deleteCategory = (req,res)=>{
+const deleteService = (req,res)=>{
 
     const id = +req.params.id
-    Category.delete(id,(err,data)=>{
+    Service.delete(id,(err,data)=>{
         if (err) return res.status(401).json({message:"error happend ",err})
         return res.status(200).json({data})
     })
 }
 
-// update Category
-const updateCategory = (req,res)=>{
+// update Service
+const updateService = (req,res)=>{
 
     const data = req.body
     const id = +req.params.id
-    Category.update(data,id,(err,data)=>{
+    Service.update(data,id,(err,data)=>{
         if (err) return res.status(401).json({message:"error happend ",err})
         return res.status(200).json({data})
     })
 }
 
 
-module.exports= {getAllCategories,createCategory,deleteCategory,updateCategory}
+module.exports= {getAllServices,createService,deleteService,updateService}

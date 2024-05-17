@@ -3,8 +3,8 @@
 
 
 import { cn } from "@/lib/utils"
-import { Link } from "react-router-dom"
-
+import { Link, useLocation } from "react-router-dom"
+import { buttonVariants } from "@/components/ui/button"
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {
     href: string
@@ -13,8 +13,10 @@ interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
+    const location = useLocation()
 
-  return (
+    const pathname = location.pathname
+    return (
     <nav
       className={cn(
         "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
@@ -23,11 +25,17 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
       {...props}
     >
       {items.map((item) => (
-        <Link
-          key={item.href}
-          to={item.href}
-       
-        >
+           <Link
+           key={item.href}
+           to={item.href}
+           className={cn(
+             buttonVariants({ variant: "ghost" }),
+             pathname === item.href
+               ? "bg-muted hover:bg-muted"
+               : "hover:bg-transparent hover:underline",
+             "justify-start"
+           )}
+         >
           {item.title}
         </Link>
       ))}

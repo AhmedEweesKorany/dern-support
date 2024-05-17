@@ -17,7 +17,12 @@ import DashboardSetting from "./pages/Settings/layout";
 import Category from "./pages/Settings/Components/Category";
 import Services from "./pages/Settings/Components/Services";
 import Users from "./pages/Settings/Components/Users";
+import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos'; // Import AOS library
+import OrdersDashboard from "./pages/Orders/OrdersDashboard";
 
+// Initialize AOS after importing styles
+AOS.init();
 export default function App() {
   
   const token = localStorage.getItem("token") || null
@@ -34,6 +39,7 @@ export default function App() {
           {/* Dashboard  */}
           <Route path="/dashboard" element={userData?.isAdmin ? <DashboardPage /> : <AuthError />} />
           <Route path="/dashboard/settings" element={userData?.isAdmin ? <DashboardSetting children={<Services/>} /> : <AuthError />} />
+          <Route path="/dashboard/orders" element={userData?.isAdmin ? <OrdersDashboard/> : <AuthError />} />
           <Route path="/dashboard/settings/category" element={userData?.isAdmin ? <DashboardSetting children={<Category/>} /> : <AuthError />} />
           <Route path="/dashboard/settings/users" element={userData?.isAdmin ? <DashboardSetting children={<Users/>} /> : <AuthError />} />
 
@@ -46,7 +52,7 @@ export default function App() {
         </Routes>
 
       </ThemeProvider>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" theme={localStorage.getItem("vite-ui-theme")} />
     </>
   )
 }

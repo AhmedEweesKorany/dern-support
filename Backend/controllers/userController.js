@@ -67,4 +67,13 @@ const userLogin= (req,res)=>{
         return res.status(200).json({message:"Logged In Successfuly",data})
     })
 }
-module.exports= {getAllUsers,getOneUser,createUser,updateUser,deleteUser,userLogin}
+
+// make user Adimn
+const makeUserAdmin = (req,res)=>{
+    const id = +req.params.id
+    User.makeUserAdmin(id,(err,data)=>{
+        if(err) return res.status(500).json({message:"err happend"})
+        return res.status(200).json({data})
+    })
+}
+module.exports= {getAllUsers,getOneUser,createUser,updateUser,deleteUser,userLogin,makeUserAdmin}

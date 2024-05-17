@@ -40,7 +40,7 @@ import { Link } from "react-router-dom"
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-          <a href="/profile">
+          <a href="/Profile">
          <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
