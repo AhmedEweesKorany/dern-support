@@ -129,3 +129,35 @@
 .high-z-index-modal{
   z-index: 999;
 }
+
+/*change status color */
+
+.status-done{
+  color: green;
+  /* font-size: 20px; */
+  border: 2px solid green;
+  text-align: center;
+  margin-left: -20px;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+.status-inprogress{
+  color: yellow;
+  /* font-size: 20px; */
+  border: 2px solid yellow;
+  text-align: center;
+  margin-left: -20px;
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+.status-canceled{
+  color: red;
+  /* font-size: 20px; */
+  border: 2px solid red;
+  text-align: center;
+  margin-left: -20px;
+  border-radius: 10px;
+  font-weight: bolder;
+}

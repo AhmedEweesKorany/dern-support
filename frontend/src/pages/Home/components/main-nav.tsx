@@ -30,10 +30,10 @@ export function MainNav({
         Testmonails
       </a>
       <a
-        href="#faqs"
+        href="/user_order"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        FAQs
+        My Orders
       </a>
     </nav>
   )

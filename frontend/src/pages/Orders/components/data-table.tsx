@@ -98,15 +98,17 @@ export function DataTable<TData, TValue>({
                                     data-state={row.getIsSelected() && "selected"}
                                 >
                                     {row.getVisibleCells().map((cell) => {
-                                    const realID = cell.row.original.id
+                                      
                                       return(
                                         
-                                            <TableCell key={cell.id}>
-                                                {flexRender(
-                                                    cell.column.columnDef.cell,
-                                                    cell.getContext()
-                                                )}
-                                            </TableCell>
+                                        
+                                        <TableCell key={cell.id}>
+                                        {flexRender(
+                                            cell.column.columnDef.cell,
+                                            cell.getContext(),
+                                            // Pass 're' as a prop to 'flexRender' if needed
+                                        )}
+                                    </TableCell>
                                         )
                                     })}
                                 </TableRow>

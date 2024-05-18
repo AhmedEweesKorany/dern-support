@@ -26,7 +26,7 @@ export function Register() {
 
 
   const [validate,setValidate] = useState({
-    user_name:"" ,email:"",account_type:"Individual",password:""
+    user_name:"" ,email:"",account_type:"Individual",password:"",bio:""
   })
 
   const navigate = useNavigate()
@@ -38,6 +38,7 @@ export function Register() {
     if(validate.user_name.length < 3) return toast.error("short username")
     else if( ! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(validate.email)) return toast.error("invalid email")
   else if(validate.password.length < 8 ) return toast.error("Short Password")
+    else if(validate.bio == "") return toast.error("Please Enter Bio")
 else{
    axios.post("http://localhost:3010/createuser",validate).then(()=>{
     toast.success("Successfully Registeraation")
@@ -81,6 +82,22 @@ else{
                 setValidate((cur) => ({
                   ...cur,
                   email: e.target.value.toLowerCase() // Updated only first name
+                }))
+              }
+            />
+          </div>
+
+          <div className="grid gap-2">
+            <Label htmlFor="Bio">Bio</Label>
+            <Input
+              id="Bio"
+              type="Bio"
+              placeholder="my bio here"
+              required
+              onChange={(e) =>
+                setValidate((cur) => ({
+                  ...cur,
+                  bio: e.target.value // Updated only first name
                 }))
               }
             />

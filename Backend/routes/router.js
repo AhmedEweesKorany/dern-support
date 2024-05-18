@@ -37,11 +37,13 @@ router.put("/updateTestmonailByUserID/:id",testmonailController.updateTestmonail
 
 // orders route 
 router.get("/getAllOrders",orderController.getAllOrder)
+router.get("/completedOrders",orderController.getCompletedTasks)
 router.post("/createOrder",orderController.createOrder)
 router.delete("/deleteOrder/:id",orderController.deleteOrder)
 router.put("/updateOrder/:id",orderController.updateOrder)
 router.get("/markAsDone/:id",orderController.updateCompletedOrder)
 router.get("/cancel_order/:id",orderController.updateCanceldOrder)
+router.get("/userOrders/:email",orderController.getUserOrders)
 
 
 module.exports = router

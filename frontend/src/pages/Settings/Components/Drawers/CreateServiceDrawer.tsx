@@ -57,7 +57,8 @@ function CreateServiceForm({ className }: React.ComponentProps<"form">) {
   const [formData,setFormData] = React.useState({
     service_name:"",
     category_name:"",
-    service_description:""
+    service_description:"",
+    service_price:0
   })
  const handleClick = ()=>{
     
@@ -66,7 +67,10 @@ function CreateServiceForm({ className }: React.ComponentProps<"form">) {
   axios.post("http://localhost:3010/createService",formData).then((data)=>{
     
     location.reload()
-  }).catch(e=> toast.error(e.response.data.message))
+  }).catch(e=> {
+    toast.error(e.response.data.message)
+    console.log(e)
+  })
 }
   return (
     <form className={cn("grid items-start gap-4", className)} >
@@ -86,7 +90,14 @@ function CreateServiceForm({ className }: React.ComponentProps<"form">) {
                 service_description: e.target.value
                })) } />
       </div>
-
+      <div className="grid gap-2">
+        <Label htmlFor="price">Service Price</Label>
+        <Input type="number" id="price"  onChange={(e) =>
+               setFormData((cur)=>({
+                ...cur,
+                service_price: e.target.value
+               })) } />
+      </div>
      
       <div className="grid gap-2">
             <Label htmlFor="acc_type">Category Type</Label>

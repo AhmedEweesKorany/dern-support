@@ -7,13 +7,13 @@ const Landing = () => {
   return (
     <div id='home' className= 'px-10 py-10 flex sm:justify-between  justify-center flex-wrap'>
 
-        <div className='img sm:w-[400px] sm:h-[400px] w-[200px] h-[200px]' data-aos="fade-in" data-aos-delay="300">
+        <div className='img sm:w-[300px] sm:h-[300px] w-[200px] h-[200px]' data-aos="fade-in" data-aos-delay="300">
         <div dangerouslySetInnerHTML={{ __html: svgContent }} />
         </div>
 
         <div className='content '>
-                <h1 className='md:text-4xl  font-bold text-2xl mr-24 mt-[100px]' data-aos="fade-up">Dern Support For Making IT Solutions</h1>
-                <a href="#services" className='mx-auto'><Button className='my-10  w-[200px] text-light' data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200">Explore Services</Button></a>
+                <h1 className='md:text-4xl  font-bold text-2xl mr-[200px] mt-[100px]' data-aos="fade-up">Dern Support For <br/> Making IT Solutions & Software Apps</h1>
+                <a href="#services" className='mx-auto'><Button className='my-10  w-[200px] ' data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200">Explore Services</Button></a>
         </div>
     </div>
   )

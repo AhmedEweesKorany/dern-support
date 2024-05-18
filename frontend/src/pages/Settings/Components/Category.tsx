@@ -4,19 +4,16 @@ import {
     TableBody,
     TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { DeleteIcon, Edit, Edit3Icon } from "lucide-react"
+import { DeleteIcon, Edit } from "lucide-react"
 import { DrawerDialogDemo } from "./Drawers/CreateCategory"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { UpdateCategoryDrawer } from "./Drawers/UpdateCategory"
-import { Search } from "@/pages/dashboard/components/search"
 import { Input } from "@/components/ui/input"
-import useSearch from "@/hooks/useSearch"
 
 
 export default function Category() {

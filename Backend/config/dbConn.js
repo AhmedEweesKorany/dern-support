@@ -175,6 +175,9 @@ const Order = sequelize.define("order",{
 })
 Testmonail.sync(); 
 Order.sync()
+User.sync()
+Category.sync()
+Service.sync()
 // connect to db
 sequelize
   .authenticate()

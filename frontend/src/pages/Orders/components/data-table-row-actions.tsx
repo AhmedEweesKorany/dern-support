@@ -23,10 +23,9 @@ interface DataTableRowActionsProps<TData> {
 }
 
 export function DataTableRowActions<TData>({
-    row,
+    row
 }: DataTableRowActionsProps<TData>) {
     const task = row.original
-    console.log(task)
     const handleComplete = ()=>{
         if(task.status == "done") return toast.info("Task is already done")
         axios.get(`http://localhost:3010/markAsDone/${task.id}`).then(()=> location.reload()).catch(e=>console.log(e))
@@ -38,6 +37,7 @@ export function DataTableRowActions<TData>({
     }
 
     const handleDelete = ()=>{
+    
         axios.delete(`http://localhost:3010/deleteOrder/${task.id}`).then(()=> location.reload()).catch(e=>console.log(e))
     }
     return (

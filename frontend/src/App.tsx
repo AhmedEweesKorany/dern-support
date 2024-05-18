@@ -20,6 +20,7 @@ import Users from "./pages/Settings/Components/Users";
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS library
 import OrdersDashboard from "./pages/Orders/OrdersDashboard";
+import User_Orders from "./pages/Home/components/User_Orders";
 
 // Initialize AOS after importing styles
 AOS.init();
@@ -45,7 +46,11 @@ export default function App() {
 
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          
           <Route path="/" element={<Home />} />
+          <Route path="/user_order" element={userData?<User_Orders />:<Login/>} />
+
+          
           <Route path="/profile" element={userData ?<SettingsLayout children={<MainProfile/>} />:<Login/>} />
           <Route path="/profile/changepassword" element={<SettingsLayout children={<ChangePass/>} />} />
           <Route path="/*" element={<Not_Found />} />

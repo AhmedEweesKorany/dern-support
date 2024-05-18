@@ -28,7 +28,7 @@ export function Login() {
       console.log(data.data.data.accessToken)
       console.log(data.data.data.response)
       localStorage.setItem("token",data.data.data.accessToken)
-      toast.success("logged in!")
+      toast.success("Logged in Successfully!")
       navigate("/")
     }).catch(e=>    toast.error(e.response.data.message)  )
 

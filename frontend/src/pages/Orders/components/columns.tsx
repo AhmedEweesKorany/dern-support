@@ -9,7 +9,6 @@ import { labels, priorities, statuses } from "../data/data"
 import { Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
-
 export const columns: ColumnDef<Task>[] = [
     {
         id: "select",
@@ -40,6 +39,7 @@ export const columns: ColumnDef<Task>[] = [
         header: ({ column }) => (
             <DataTableColumnHeader column={column} title="Task" />
         ),
+        size:1,
         cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
         enableSorting: false,
         enableHiding: false,
@@ -162,6 +162,6 @@ export const columns: ColumnDef<Task>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => <DataTableRowActions row={row} />,
+        cell: ({ row }) => <DataTableRowActions row={row}  />,
     },
 ]

@@ -14,7 +14,7 @@ export default  function OrdersDashboard() {
   const [tasks,setTasks] = useState([])
 
   
-  console.log(tasks)
+
   useEffect(()=>{
       axios.get("http://localhost:3010/getAllOrders").then(data=>setTasks(data.data.data))
   },[])
@@ -41,7 +41,7 @@ export default  function OrdersDashboard() {
             <UserNav userData = {userData?userData:null} handleLogout={handleLogout}/>
           </div>
         </div>
-        <DataTable data={tasks} columns={columns} />
+        <DataTable data={tasks} columns={columns}  />
       </div>
     </>
   )

@@ -9,6 +9,22 @@ Order.all((err,data)=>{
 }
 
 
+
+const getUserOrders = (req,res)=>{
+    const email = req.params.email
+    Order.one(email,(err,data)=>{
+        if (err) return res.status(401).json({message:"error happend ",err})
+        return res.status(200).json({data})
+
+    })
+}
+
+// get compelted tasks 
+const getCompletedTasks = (req,res)=>{
+    Order.completed((err,data)=>{
+        if (err) return res.status(401).json({message:"error happend ",err})
+        return res.status(200).json({data})})
+}
 // Creat code
 const createOrder = (req,res)=>{
     const data = req.body
@@ -27,6 +43,7 @@ const deleteOrder = (req,res)=>{
 
     const id = +req.params.id
     Order.delete(id,(err,data)=>{
+        
         if (err) return res.status(401).json({message:"error happend ",err})
         return res.status(200).json({data})
     })
@@ -66,4 +83,4 @@ const updateCanceldOrder = (req,res)=>{
 
 
 
-module.exports= {getAllOrder,createOrder,deleteOrder,updateOrder,updateCompletedOrder,updateCanceldOrder}
+module.exports= {getAllOrder,createOrder,deleteOrder,updateOrder,updateCompletedOrder,updateCanceldOrder,getUserOrders,getCompletedTasks}
