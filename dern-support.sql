@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 18, 2024 at 08:08 PM
+-- Generation Time: May 18, 2024 at 08:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -96,34 +96,6 @@ INSERT INTO `service` (`service_id`, `service_name`, `service_description`, `cat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Testimonial`
---
-
-CREATE TABLE `Testimonial` (
-  `id` int(11) NOT NULL,
-  `feedback` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `bio` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testimonial`
---
-
-CREATE TABLE `testimonial` (
-  `id` int(11) NOT NULL,
-  `feedback` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `bio` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `testmonail`
 --
 
@@ -141,7 +113,7 @@ CREATE TABLE `testmonail` (
 
 INSERT INTO `testmonail` (`id`, `feedback`, `user_name`, `bio`, `user_id`) VALUES
 (3, 'sad', 'ahmed ewees koranay', 'updated bio ', 15),
-(4, 'سيد العجل', 'ahmed ewees koranay', 'updated bio ', 15),
+(4, 'موقع رائع', 'ahmed ewees koranay', 'updated bio ', 15),
 (5, 'good service', 'Sayed Ashraf aaa', 'my name is syaed !! a', 19),
 (6, 'nice website', 'ahmed ewees koranay', 'updated bio ', 15);
 
@@ -193,18 +165,6 @@ ALTER TABLE `service`
   ADD KEY `categor_id` (`category_name`);
 
 --
--- Indexes for table `Testimonial`
---
-ALTER TABLE `Testimonial`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `testimonial`
---
-ALTER TABLE `testimonial`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `testmonail`
 --
 ALTER TABLE `testmonail`
@@ -237,18 +197,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `service`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `Testimonial`
---
-ALTER TABLE `Testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `testimonial`
---
-ALTER TABLE `testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `testmonail`
